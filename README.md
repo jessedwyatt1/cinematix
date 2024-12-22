@@ -8,7 +8,7 @@ A beautiful, modern web interface for Transmission BitTorrent client with a focu
 
 - 🎬 Seamless integration with YTS movies database
 - 🌙 Beautiful dark mode interface
-- 📊 Real-time torrent statistics and graphs
+- 📊 Real-time torrent statistics
 - 🔍 Advanced torrent search and filtering
 - 📁 Detailed file management
 - 🔄 Real-time updates via WebSocket
@@ -18,15 +18,31 @@ A beautiful, modern web interface for Transmission BitTorrent client with a focu
 
 ## Prerequisites
 
-- Node.js >= 18
-- npm or yarn
-- Running Transmission daemon with RPC enabled
+- Docker and Docker Compose
+- Or alternatively: Node.js >= 18 and npm
 
 ## Installation
 
+### Using Docker (Recommended)
+
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/cinematix.git
+git clone https://github.com/jessedwyatt1/cinematix.git
+cd cinematix
+```
+
+2. Start the application using Docker Compose:
+```bash
+docker compose up -d
+```
+
+The application will be available at `http://localhost:5173`.
+
+### Manual Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/jessedwyatt1/cinematix.git
 cd cinematix
 ```
 
@@ -54,7 +70,7 @@ Run the development server:
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173`.
+The application will be available at `http://localhost:4173`.
 
 ### Project Structure
 
@@ -107,7 +123,6 @@ Make sure your Transmission daemon has RPC enabled and accessible. Default conne
 - Real-time status updates
 - Detailed torrent information
 - File selection and priority management
-- Bandwidth graphs and statistics
 - Advanced queue management
 
 ### User Interface
@@ -130,6 +145,31 @@ Make sure your Transmission daemon has RPC enabled and accessible. Default conne
 - `Delete`: Remove selected torrents
 - `Ctrl/Cmd + A`: Select all torrents
 - `Escape`: Clear selection
+
+## Security Considerations
+
+- Always use secure passwords for Transmission RPC access
+- Consider using HTTPS when exposing the interface to the internet
+- Keep the application and its dependencies up to date
+- Be cautious when downloading torrents from unknown sources
+
+## Troubleshooting
+
+### Common Issues
+
+1. Connection Issues:
+   - Verify Transmission daemon is running
+   - Check RPC credentials
+   - Ensure firewall allows connection on configured port
+
+2. Docker Issues:
+   - Check container logs: `docker compose logs`
+   - Verify container network connectivity
+   - Ensure required ports are not in use
+
+3. Permission Issues:
+   - Check download directory permissions
+   - Verify Transmission user has write access
 
 ## Contributing
 
