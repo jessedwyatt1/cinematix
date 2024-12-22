@@ -78,6 +78,10 @@ export interface TrackerStats {
   lastAnnounceResult: string;
   seederCount: number;
   leecherCount: number;
+  tier: number;
+  lastAnnouncePeerCount: number;
+  nextAnnounceTime: number;
+  lastAnnounceTime: number;
 }
 
 export interface TorrentFile {
@@ -101,6 +105,7 @@ export interface PeerInfo {
   isUTP: boolean;
   isIncoming: boolean;
   isDownloadingFrom: boolean;
+  progress: number;
 }
 
 export interface Torrent {
@@ -134,6 +139,7 @@ export interface Torrent {
   peers: PeerInfo[];
   files: TorrentFile[];
   fileStats: TorrentFileStat[];
+  downloadDir: string;
 }
 
 export enum TorrentStatus {

@@ -1,12 +1,48 @@
 // src/lib/api/client.ts
 import axios, { AxiosInstance } from 'axios';
-import { SessionInfo } from '@/types/models';
+import { SessionInfo, Torrent } from '@/types/models';
 
 export interface TransmissionSettings {
   url: string;
   port: number;
   username?: string;
   password?: string;
+}
+
+export interface FreeSpaceRequest {
+  path: string;
+}
+
+export interface FreeSpaceArguments {
+  path: string;
+  "size-bytes": number;
+  total_size: number;
+}
+
+export interface FreeSpaceResponse {
+  result: string;
+  arguments: FreeSpaceArguments;
+  tag?: number;
+}
+
+export interface FreeSpaceResult {
+  path: string;
+  freeSpace: number;
+  totalSize: number;
+}
+
+export interface AddTorrentArgs {
+  filename?: string;
+  metainfo?: string;
+  'download-dir'?: string;
+  paused?: boolean;
+}
+
+export interface TorrentsGetResponse {
+  result: string;
+  arguments?: {
+    torrents: Torrent[];
+  };
 }
 
 export class TransmissionClient {
@@ -118,36 +154,11 @@ export class TransmissionClient {
     return this.rpcCall('session-set', settings);
   }
 
-  public async getTorrents(fields?: string[]) {
-    return this.rpcCall('torrent-get', {
-      fields: fields || [
-        'id',
-        'name',
-        'status',
-        'error',
-        'errorString',
-        'eta',
-        'isFinished',
-        'isStalled',
-        'leftUntilDone',
-        'metadataPercentComplete',
-        'peersConnected',
-        'peersGettingFromUs',
-        'peersSendingToUs',
-        'percentDone',
-        'queuePosition',
-        'rateDownload',
-        'rateUpload',
-        'recheckProgress',
-        'seedRatioMode',
-        'seedRatioLimit',
-        'sizeWhenDone',
-        'totalSize',
-        'uploadedEver',
-        'uploadRatio',
-        'webseedsSendingToUs'
-      ]
+  public async getTorrents(fields: string[]) {
+    const response = await this.rpcCall<{ fields: string[] }, { torrents: Torrent[] }>('torrent-get', {
+      fields
     });
+    return response;
   }
 
   public async addTorrent(args: {

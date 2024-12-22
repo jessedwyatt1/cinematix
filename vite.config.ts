@@ -15,14 +15,17 @@ export default defineConfig({
     },
   },
   server: {
+    host: true,
+    port: 5173,
     proxy: {
       // Proxy requests to the config server
       '/api/config': {
-        target: 'http://localhost:3000',
+        target: 'http://config-server:3000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/config/, '/config')
       },
-      '/transmission/rpc': {
+      // Proxy Transmission requests to your Transmission instance
+      '/transmission': {
         target: 'http://localhost:9091',
         changeOrigin: true,
       }

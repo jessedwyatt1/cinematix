@@ -1,36 +1,71 @@
+gitignore|*.lock|*.log' --prune
 .
 ├── README.md
+├── cinematix-config-server
+│   ├── db.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   ├── index.ts
+│   │   ├── middleware
+│   │   │   └── validate.ts
+│   │   └── utils
+│   │       └── logger.ts
+│   └── tsconfig.json
 ├── eslint.config.js
 ├── index.html
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.js
 ├── project-documentation.md
-├── public
-│   ├── movie-icon.svg
-│   └── vite.svg
 ├── rpc-spec.md
 ├── src
 │   ├── App.css
 │   ├── App.tsx
 │   ├── app
 │   │   └── layout.tsx
-│   ├── assets
-│   │   └── react.svg
 │   ├── backend
 │   │   └── config.js
 │   ├── components
 │   │   ├── InitializationDialog.tsx
 │   │   ├── Toast.tsx
 │   │   ├── layout
+│   │   │   ├── Header.tsx
+│   │   │   ├── MainLayout_.tsx
+│   │   │   ├── Sidebar.tsx
+│   │   │   └── StatusBar.tsx
 │   │   ├── modals
+│   │   │   └── ConfirmDialog.tsx
 │   │   ├── movies
+│   │   │   └── MovieSearchBar.tsx
 │   │   ├── torrents
+│   │   │   ├── TorrentContextMenu.tsx
+│   │   │   ├── TorrentFilters.tsx
+│   │   │   └── TorrentsList.tsx
 │   │   └── ui
+│   │       ├── Button.tsx
+│   │       ├── Card.tsx
+│   │       ├── Dialog.tsx
+│   │       ├── Input.tsx
+│   │       ├── ProgressBar.tsx
+│   │       ├── Table.tsx
+│   │       └── tabs.tsx
 │   ├── features
 │   │   ├── settings
+│   │   │   ├── SettingsDialog.tsx
+│   │   │   └── SettingsForm.tsx
 │   │   ├── stats
+│   │   │   ├── RatioStats.tsx
+│   │   │   ├── SpeedGraph.tsx
+│   │   │   └── StatsDisplay.tsx
 │   │   └── torrents
+│   │       ├── AddTorrent.tsx
+│   │       └── details
+│   │           ├── FilesList.tsx
+│   │           ├── GeneralInfo.tsx
+│   │           ├── PeersList.tsx
+│   │           ├── TorrentDetails.tsx
+│   │           └── TrackersList.tsx
 │   ├── hooks
 │   │   ├── useSession.ts
 │   │   ├── useTorrents.ts
@@ -38,12 +73,18 @@
 │   ├── index.css
 │   ├── lib
 │   │   ├── api
+│   │   │   ├── client.ts
+│   │   │   ├── configClient.ts
+│   │   │   ├── session.ts
+│   │   │   ├── torrents.ts
+│   │   │   └── yts.ts
 │   │   ├── config.ts
 │   │   ├── constants.ts
 │   │   └── utils.ts
 │   ├── main.tsx
 │   ├── store
 │   │   ├── middleware
+│   │   │   └── logger.ts
 │   │   ├── session.ts
 │   │   ├── store.ts
 │   │   └── torrents.ts
@@ -63,7 +104,8 @@
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json
+├── tsconfig.tsbuildinfo
 ├── vite.config.ts
 └── yts.mx.txt
 
-24 directories, 43 files
+27 directories, 81 files
