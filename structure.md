@@ -1,7 +1,8 @@
-gitignore|*.lock|*.log' --prune
 .
+├── Dockerfile
 ├── README.md
 ├── cinematix-config-server
+│   ├── Dockerfile
 │   ├── db.json
 │   ├── package-lock.json
 │   ├── package.json
@@ -12,6 +13,7 @@ gitignore|*.lock|*.log' --prune
 │   │   └── utils
 │   │       └── logger.ts
 │   └── tsconfig.json
+├── docker-compose.yml
 ├── eslint.config.js
 ├── index.html
 ├── package-lock.json
@@ -108,4 +110,4 @@ gitignore|*.lock|*.log' --prune
 ├── vite.config.ts
 └── yts.mx.txt
 
-27 directories, 81 files
+27 directories, 84 files
