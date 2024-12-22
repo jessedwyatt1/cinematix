@@ -1,0 +1,98 @@
+ API Endpoints and Usage
+
+Data Structure
+All endpoints return a JSON/XML response with:
+	•	status: ok or error
+	•	status_message: message regarding query status
+	•	data: if status = ok, the query results are in data
+
+List Movies
+GET:
+	•	https://yts.mx/api/v2/list_movies.json
+	•	https://yts.mx/api/v2/list_movies.jsonp
+	•	https://yts.mx/api/v2/list_movies.xml
+
+Parameters:
+	•	limit (int 1–50, default 20)
+	•	page (int, default 1)
+	•	quality (string: 480p, 720p, 1080p, 1080p.x265, 2160p, 3D, default All)
+	•	minimum_rating (int 0–9, default 0)
+	•	query_term (string, default 0)
+	•	genre (string, default All)
+	•	sort_by (string: title, year, rating, peers, seeds, download_count, like_count, date_added; default date_added)
+	•	order_by (string: desc, asc; default desc)
+	•	with_rt_ratings (boolean, default false)
+
+Examples:
+	•	https://yts.mx/api/v2/list_movies.json?quality=3D
+	•	https://yts.mx/api/v2/list_movies.xml?sort=seeds&limit=15
+
+Response Data:
+	•	movie_count
+	•	limit
+	•	page_number
+	•	movies (array of movie objects)
+
+Magnet URL Construction:
+magnet:?xt=urn:btih:TORRENT_HASH&dn=Url+Encoded+Movie+Name&tr=[tracker_url]
+
+Recommended trackers:
+	•	udp://open.demonii.com:1337/announce
+	•	udp://tracker.openbittorrent.com:80
+	•	udp://tracker.coppersurfer.tk:6969
+	•	udp://glotorrents.pw:6969/announce
+	•	udp://tracker.opentrackr.org:1337/announce
+	•	udp://torrent.gresille.org:80/announce
+	•	udp://p4p.arenabg.com:1337
+	•	udp://tracker.leechers-paradise.org:6969
+
+Movie Details
+GET:
+	•	https://yts.mx/api/v2/movie_details.json
+	•	https://yts.mx/api/v2/movie_details.jsonp
+	•	https://yts.mx/api/v2/movie_details.xml
+
+Parameters:
+	•	movie_id or imdb_id (int)
+	•	with_images (boolean, default false)
+	•	with_cast (boolean, default false)
+
+Examples:
+	•	https://yts.mx/api/v2/movie_details.json?movie_id=10
+	•	https://yts.mx/api/v2/movie_details.json?movie_id=15&with_images=true&with_cast=true
+
+Magnet URL Construction: (Same as above)
+
+Recommended trackers:
+	•	udp://glotorrents.pw:6969/announce
+	•	udp://tracker.opentrackr.org:1337/announce
+	•	udp://torrent.gresille.org:80/announce
+	•	udp://tracker.openbittorrent.com:80
+	•	udp://tracker.coppersurfer.tk:6969
+	•	udp://tracker.leechers-paradise.org:6969
+	•	udp://p4p.arenabg.ch:1337
+	•	udp://tracker.internetwarriors.net:1337
+
+Movie Suggestions
+GET:
+	•	https://yts.mx/api/v2/movie_suggestions.json
+	•	https://yts.mx/api/v2/movie_suggestions.jsonp
+	•	https://yts.mx/api/v2/movie_suggestions.xml
+
+Parameters:
+	•	movie_id (int)
+
+Example:
+	•	https://yts.mx/api/v2/movie_suggestions.json?movie_id=10
+
+Movie Parental Guides
+GET:
+	•	https://yts.mx/api/v2/movie_parental_guides.json
+	•	https://yts.mx/api/v2/movie_parental_guides.jsonp
+	•	https://yts.mx/api/v2/movie_parental_guides.xml
+
+Parameters:
+	•	movie_id (int)
+
+Example:
+	•	https://yts.mx/api/v2/movie_parental_guides.json?movie_id=10
